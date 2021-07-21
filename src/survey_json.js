@@ -3,6 +3,170 @@ export var json = {
     showProgressBar: "top",
     pages: [
       {
+        type: "panel",
+        elements: [
+          {
+            type: "paneldynamic",
+            renderMode: "progressTop",
+            allowAddPanel: false,
+            allowRemovePanel: false,
+            name: "member_arrray_employer_info",
+            title: "Your employers",
+            valueName: "member_arrray_employer",
+            panelCount: 1,
+            templateElements: [
+              {
+                type: "panel",
+                name: "panel_member_employer_address",
+                title: "Address",
+                elements: [
+                  {
+                    type: "text",
+                    name: "member_employer_address",
+                    valueName: "address",
+                    title: "Address",
+                  },
+                  {
+                    type: "text",
+                    name: "member_employer_phone",
+                    valueName: "phone",
+                    title: "Phone number:",
+                  },
+                  {
+                    type: "text",
+                    name: "member_employer_abn",
+                    valueName: "abn",
+                    title: "ABN",
+                  },
+                ],
+              },
+              {
+                type: "panel",
+                name: "panel_member_employer_role",
+                title: "What is your role?",
+                elements: [
+                  {
+                    type: "radiogroup",
+                    choices: ["Full time", "Part time", "Casual", "Seasonal"],
+                    name: "member_employer_role",
+                    title: "Your role",
+                    valueName: "role",
+                  },
+                ],
+              },
+              {
+                type: "panel",
+                name: "panel_member_employer_hours_work",
+                title: "What hours do you work?",
+                elements: [
+                  {
+                    type: "text",
+                    inputType: "number",
+                    name: "member_employer_hours_worked",
+                    valueName: "hours_worked",
+                    title: "Hours:",
+                  },
+                  {
+                    type: "dropdown",
+                    name: "member_employer_hours_worked_frequency",
+                    title: "Worked Frequency:",
+                    valueName: "hours_worked_frequency",
+                    startWithNewLine: false,
+                    defaultValue: "Year",
+                    choices: ["Day", "Week", "Fortnight", "Month", "Year"],
+                  },
+                ],
+              },
+              {
+                type: "panel",
+                name: "panel_member_employer_income",
+                title: "What income do you receive?",
+                elements: [
+                  {
+                    type: "text",
+                    inputType: "number",
+                    name: "member_employer_income",
+                    valueName: "income",
+                    title: "Income:",
+                  },
+                  {
+                    type: "dropdown",
+                    name: "member_employer_income_frequency",
+                    title: "Income Frequency",
+                    valueName: "income_frequency",
+                    startWithNewLine: false,
+                    defaultValue: "Year",
+                    choices: ["Day", "Week", "Fortnight", "Month", "Year"],
+                  },
+                ],
+              },
+            ],
+            templateTitle: "Employer name: {panel.name}",
+          },
+        ],
+      },
+      {
+        questions: [
+          {
+            type: "myquestion",
+            name: "xxxxxxx"
+          },
+          {
+              name: "name",
+              type: "text",
+              title: "Please enter your namedddd:",
+              placeHolder: "Jon Snow",
+              isRequired: true,
+              autoComplete: "off"
+          }, {
+              name: "birthdate",
+              type: "text",
+              inputType: "date",
+              title: "Your birthdate:",
+              isRequired: true,
+              autoComplete: "bdate"
+          }, {
+              name: "color",
+              type: "text",
+              inputType: "color",
+              title: "Your favorite color:"
+          }, {
+              name: "email",
+              type: "text",
+              inputType: "email",
+              title: "Your e-mail:",
+              placeHolder: "jon.snow@nightwatch.org",
+              isRequired: true,
+              autoComplete: "email",
+              validators: [
+                  {
+                      type: "email"
+                  }
+              ]
+          },
+          {
+            type: "radiogroup",
+            name: "car",
+            title: "What car are you driving?",
+            isRequired: true,
+            colCount: 4,
+            choices: [
+                "None",
+                "Ford",
+                "Vauxhall",
+                "Volkswagen",
+                "Nissan",
+                "Audi",
+                "Mercedes-Benz",
+                "BMW",
+                "Peugeot",
+                "Toyota",
+                "Citroen"
+            ]
+        }
+      ]
+      },
+      {
         elements: [
           {
             type: "myquestion",
@@ -125,11 +289,12 @@ export var json = {
           },
           {
             name: "date",
-            type: "datepicker",
+            type: "text",
             inputType: "date",
             title: "Your favorite date:",
             dateFormat: "mm/dd/yy",
-            isRequired: true
+            isRequired: true,
+            autoComplete: "bdate"
           }
         ]
       },

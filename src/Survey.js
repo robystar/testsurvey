@@ -17,7 +17,15 @@ import "jquery-bar-rating";
 
 import "pretty-checkbox/dist/pretty-checkbox.css";
 
-import { json } from "./survey_json.js";
+import { json } from "./survey_json";
+//import { json, pippo } from "./products";
+import { pippo } from "./pippo";
+import { json as jsonRichiedenti }  from "./richiedenti";
+
+import { Anagrafica } from "./anagrafica";
+
+
+import { createDocument } from "./api";
 
 //import "icheck/skins/square/blue.css";
 window["$"] = window["jQuery"] = $;
@@ -41,25 +49,68 @@ widgets.ckeditor(Survey);
 widgets.autocomplete(Survey, $);
 widgets.bootstrapslider(Survey);
 
-function onValueChanged(result) {
+var storageName = "survey_prova";
+
+Anagrafica();
+
+function saveSurveyData(sender) {
+    var data = sender.data;
+    data.pageNo = sender.currentPageNo;
+    createDocument(data);
+    window
+        .localStorage
+        .setItem(storageName, JSON.stringify(data));
+}
+
+function onAfterRenderPage(survey) {
+  console.log(survey);
+  const prevData = window.localStorage.getItem(storageName) || null;
+  if (prevData) {
+    var data = JSON.parse(prevData);
+    survey.data = data;
+    if (data.pageNo) {
+      survey.currentPageNo = data.pageNo;
+    }
+  }
+} 
+
+
+function onValueChanged(sender) {
     console.log("value changed!");
 }
 
-function onComplete(result) {
-    console.log("Complete! " + result);
+
+function onComplete(sender, options) {
+    console.log(sender.data);
+    saveSurveyData(sender);
+    document
+        .querySelector('#surveyResult')
+        .textContent = "Dati JSON:\n" + JSON.stringify(sender.data, null, 3);
+};
+
+function onPartialSend(sender){
+    console.log(sender.data);
+    saveSurveyData(sender);
 }
 
 
 export function SurveyPage() {
-    var model = new Survey.Model(json);
+
+    const model = new Survey.Model(jsonRichiedenti);
+    model.locale = "it";
+
     return (
     <div className="container">
-        <h2>SurveyJS Library - a sample survey below</h2>
+        <h2>SurveyJS Library - prove a caso</h2>
         <Survey.Survey
+            sendResultOnPageNext={true}
             model={model}
             onComplete={onComplete}
             onValueChanged={onValueChanged}
+            onPartialSend={onPartialSend}
+            onAfterRenderPage={onAfterRenderPage}
           />
+        <pre><div id="surveyResult"></div></pre>
     </div>
     );
   }

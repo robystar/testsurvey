@@ -23,6 +23,7 @@ export class MyQuestion extends Survey.SurveyElementBase {
     var cssClasses = this.question.cssClasses;
     return (
       <div className={cssClasses.root}>
+        <h5>HHHHHHHHHHHHHHHHHHHHHHh</h5>
         <span>My Text Value: </span><span><b>{this.question.text}</b></span>
       </div>
     );

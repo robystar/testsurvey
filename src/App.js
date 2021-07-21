@@ -15,38 +15,38 @@ export default function SurveyJSReactApplication() {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="/">
-                SurveyJS + ReactJS
-              </a>
+            <a className="navbar-brand" href="/">
+              Prova SurveyJS + ReactJS Bootstrap4
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/survey">Survey</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/creator">SurveyJS Creator</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/export">Export to PDF</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/analytics">Analytics</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/analyticstabulator">Results Table</Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link" to="/analyticsdatatables">
+                    Results Table (IE Support)
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <ul className="nav navbar-nav">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/survey">Survey</Link>
-              </li>
-              <li>
-                <Link to="/creator">SurveyJS Creator</Link>
-              </li>
-              <li>
-                <Link to="/export">Export to PDF</Link>
-              </li>
-              <li>
-                <Link to="/analytics">Analytics</Link>
-              </li>
-              <li>
-                <Link to="/analyticstabulator">Results Table</Link>
-              </li>
-              <li>
-                <Link to="/analyticsdatatables">
-                  Results Table (IE Support)
-                </Link>
-              </li>
-            </ul>
           </div>
         </nav>
 

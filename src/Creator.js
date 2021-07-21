@@ -1,6 +1,16 @@
 import React from "react";
 import SurveyCreator from "./SurveyCreator";
 
+
+SurveyCreator.JSON = {
+  elements: [
+      {
+          type: "nominativo",
+          name: "Nominativo"
+      }
+  ]
+};
+
 export function CreatorPage() {
     return (
       <div>
